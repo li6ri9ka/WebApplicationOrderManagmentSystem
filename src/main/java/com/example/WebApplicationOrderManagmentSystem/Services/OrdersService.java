@@ -1,9 +1,8 @@
-package Services;
+package com.example.WebApplicationOrderManagmentSystem.Services;
 
-import DTO.OrderDTO;
-import Model.Orders;
-import Repositories.OrderRepository;
-import org.hibernate.query.Order;
+import com.example.WebApplicationOrderManagmentSystem.DTO.OrderDTO;
+import com.example.WebApplicationOrderManagmentSystem.Model.Orders;
+import com.example.WebApplicationOrderManagmentSystem.Repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,8 @@
-package Services;
+package com.example.WebApplicationOrderManagmentSystem.Services;
 
-import DTO.CustomerDTO;
-import Model.Customer;
-import Repositories.CustomerRepository;
+import com.example.WebApplicationOrderManagmentSystem.DTO.CustomerDTO;
+import com.example.WebApplicationOrderManagmentSystem.Model.Customer;
+import com.example.WebApplicationOrderManagmentSystem.Repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +24,8 @@ public class CustomerService {
     public Customer addCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
-    public Customer updateCustomer(String name, String login, Long id, Customer customer) {
+    public Customer updateCustomer(Long id, Customer customer) {
         if (customerRepository.existsById(id)) {
-            customer.setName_customer(name);
-            customer.setLogin_customer(login);
             return customerRepository.save(customer);
         } else {
             throw new RuntimeException("Customer not found");

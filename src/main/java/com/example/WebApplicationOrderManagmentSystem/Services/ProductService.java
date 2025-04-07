@@ -1,8 +1,8 @@
-package Services;
+package com.example.WebApplicationOrderManagmentSystem.Services;
 
-import DTO.ProductDTO;
-import Model.Product;
-import Repositories.ProductRepository;
+import com.example.WebApplicationOrderManagmentSystem.DTO.ProductDTO;
+import com.example.WebApplicationOrderManagmentSystem.Model.Product;
+import com.example.WebApplicationOrderManagmentSystem.Repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,11 +27,9 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public Product updateProduct(Long id,String name,double price,Product product) {
+    public Product updateProduct(Long id, Product product) {
         if(productRepository.existsById(id)) {
             product.setId(id);
-            product.setName_product(name);
-            product.setPrice(price);
             return productRepository.save(product);
         }
         else{

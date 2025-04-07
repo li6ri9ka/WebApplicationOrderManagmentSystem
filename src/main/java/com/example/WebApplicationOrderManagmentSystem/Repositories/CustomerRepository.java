@@ -1,6 +1,6 @@
-package Repositories;
+package com.example.WebApplicationOrderManagmentSystem.Repositories;
 
-import Model.Customer;
+import com.example.WebApplicationOrderManagmentSystem.Model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {

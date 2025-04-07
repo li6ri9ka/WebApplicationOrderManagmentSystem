@@ -1,15 +1,13 @@
-package Services;
+package com.example.WebApplicationOrderManagmentSystem.Services;
 
 
-import DTO.CustomerDTO;
-import DTO.OrderDTO;
-import DTO.ProductDTO;
-import Model.Customer;
-import Model.Orders;
-import Model.Product;
+import com.example.WebApplicationOrderManagmentSystem.DTO.CustomerDTO;
+import com.example.WebApplicationOrderManagmentSystem.DTO.OrderDTO;
+import com.example.WebApplicationOrderManagmentSystem.DTO.ProductDTO;
+import com.example.WebApplicationOrderManagmentSystem.Model.Customer;
+import com.example.WebApplicationOrderManagmentSystem.Model.Orders;
+import com.example.WebApplicationOrderManagmentSystem.Model.Product;
 import org.springframework.stereotype.Service;
-
-import java.sql.Timestamp;
 
 @Service
 public class MappingUntils {

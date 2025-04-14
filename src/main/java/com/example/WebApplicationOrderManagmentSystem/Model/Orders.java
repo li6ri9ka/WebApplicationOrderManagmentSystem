@@ -14,8 +14,8 @@ public class Orders {
     private Long id_order;
     @Column
     private int quantity;
-    @Column
-    private Status status;
+    @Column(name = "status_order")
+    private String statusOrder;
     @Column
     private double total_cost;
     @Column
@@ -28,12 +28,12 @@ public class Orders {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    public Long getId() {
+    public Long getId_order() {
         return id_order;
     }
 
-    public void setId(Long id) {
-        this.id_order = id;
+    public void setId_order(Long id_order) {
+        this.id_order = id_order;
     }
 
     public int getQuantity() {
@@ -44,12 +44,12 @@ public class Orders {
         this.quantity = quantity;
     }
 
-    public Status getStatus() {
-        return status;
+    public String getStatus_order() {
+        return statusOrder;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatus_order(String status_order) {
+        this.statusOrder = status_order;
     }
 
     public double getTotal_cost() {

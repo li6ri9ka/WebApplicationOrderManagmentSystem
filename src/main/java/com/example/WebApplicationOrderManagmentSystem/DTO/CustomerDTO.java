@@ -1,5 +1,6 @@
 package com.example.WebApplicationOrderManagmentSystem.DTO;
 
+import com.example.WebApplicationOrderManagmentSystem.Model.AccountUser;
 import lombok.Data;
 
 
@@ -7,8 +8,7 @@ import lombok.Data;
 public class CustomerDTO {
      Long id;
      String name_customer;
-     String login_customer;
-     String password_customer;
+     AccountUser accountUser;
 
      public Long getId() {
           return id;
@@ -26,19 +26,11 @@ public class CustomerDTO {
           this.name_customer = name_customer;
      }
 
-     public String getLogin_customer() {
-          return login_customer;
+     public AccountUser getAccountUser() {
+          return accountUser;
      }
 
-     public void setLogin_customer(String login_customer) {
-          this.login_customer = login_customer;
-     }
-
-     public String getPassword_customer() {
-          return password_customer;
-     }
-
-     public void setPassword_customer(String password_customer) {
-          this.password_customer = password_customer;
+     public void setAccountUser(AccountUser accountUser) {
+          this.accountUser = accountUser;
      }
 }

@@ -12,25 +12,24 @@ import lombok.Data;
 @Entity
 public class Customer {
     @Id
-    @Column
+    @Column(name = "id_customer")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_customer;
+    private Long id;
     @Column
     private String name_customer;
-    @Column
-    private String login_customer;
-    @Column
-    private String password_customer;
+    @OneToOne
+    @JoinColumn(name = "accountUser_id")
+    private AccountUser accountUser;
     @OneToMany(mappedBy = "customer")
     @JsonIgnore
     private List<Orders> orders;
 
-    public Long getId() {
-        return id_customer;
+    public Long getIdCustomer() {
+        return id;
     }
 
-    public void setId(Long id) {
-        this.id_customer = id;
+    public void setId_customer(Long id_customer) {
+        this.id = id_customer;
     }
 
     public String getName_customer() {
@@ -41,27 +40,19 @@ public class Customer {
         this.name_customer = name_customer;
     }
 
-    public String getLogin_customer() {
-        return login_customer;
-    }
-
-    public void setLogin_customer(String login_customer) {
-        this.login_customer = login_customer;
-    }
-
-    public String getPassword_customer() {
-        return password_customer;
-    }
-
-    public void setPassword_customer(String password_customer) {
-        this.password_customer = password_customer;
-    }
-
     public List<Orders> getOrders() {
         return orders;
     }
 
     public void setOrders(List<Orders> orders) {
         this.orders = orders;
+    }
+
+    public AccountUser getAccountUser() {
+        return accountUser;
+    }
+
+    public void setAccountUser(AccountUser accountUser) {
+        this.accountUser = accountUser;
     }
 }

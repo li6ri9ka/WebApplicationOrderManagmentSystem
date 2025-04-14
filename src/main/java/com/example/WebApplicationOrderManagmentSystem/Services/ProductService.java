@@ -19,8 +19,8 @@ public class ProductService {
         return productRepository.findAll().stream().map(mappingUntils::mappingProductDTO).toList();
     }
 
-    public List<ProductDTO> findById(Long id) {
-        return productRepository.findById(id).stream().map(mappingUntils::mappingProductDTO).toList();
+    public Product findById(Long id) {
+        return productRepository.findById(id).orElse(null);
     }
 
     public Product saveProduct(Product product) {
@@ -29,7 +29,7 @@ public class ProductService {
 
     public Product updateProduct(Long id, Product product) {
         if(productRepository.existsById(id)) {
-            product.setId(id);
+            product.setId_product(id);
             return productRepository.save(product);
         }
         else{

@@ -29,10 +29,9 @@ public class OrdersService {
         return orderRepository.save(order);
     }
 
-    public Orders updateOrder(Long id, int quantity,Orders order){
+    public Orders updateOrder(Long id,Orders order){
         if(orderRepository.existsById(id)){
-            order.setId(id);
-            order.setQuantity(quantity);
+            order.setId_order(id);
             return orderRepository.save(order);
         }
         else {

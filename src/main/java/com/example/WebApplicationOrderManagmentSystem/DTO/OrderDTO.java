@@ -2,7 +2,6 @@ package com.example.WebApplicationOrderManagmentSystem.DTO;
 
 import com.example.WebApplicationOrderManagmentSystem.Model.Customer;
 import com.example.WebApplicationOrderManagmentSystem.Model.Product;
-import com.example.WebApplicationOrderManagmentSystem.Model.Status;
 import lombok.Data;
 
 import java.sql.Timestamp;
@@ -11,14 +10,13 @@ import java.sql.Timestamp;
 public class OrderDTO {
     Long id;
     int quantity;
-    Status status;
+    String status_order;
     double total_cost;
     Timestamp orderCreated;
     Customer customer;
     Product product;
 
     public Long getId() {
-
         return id;
     }
 
@@ -34,12 +32,12 @@ public class OrderDTO {
         this.quantity = quantity;
     }
 
-    public Status getStatus() {
-        return status;
+    public String getStatus_order() {
+        return status_order;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void setStatus_order(String status_order) {
+        this.status_order = status_order;
     }
 
     public double getTotal_cost() {

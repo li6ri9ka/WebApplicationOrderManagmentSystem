@@ -12,7 +12,7 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_order;
+    private Long id_product;
     @Column
     private String name_product;
     @Column
@@ -23,12 +23,12 @@ public class Product {
     private List<Orders> orders;
 
 
-    public Long getId() {
-        return id_order;
+    public Long getId_product() {
+        return id_product;
     }
 
-    public void setId(Long id) {
-        this.id_order = id;
+    public void setId_product(Long id_product) {
+        this.id_product = id_product;
     }
 
     public String getName_product() {

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class MappingUntils {
     public ProductDTO mappingProductDTO(Product product) {
         ProductDTO productDTO = new ProductDTO();
-        productDTO.setId(product.getId());
+        productDTO.setId(product.getId_product());
         productDTO.setName_product(product.getName_product());
         productDTO.setPrice(product.getPrice());
         productDTO.setQuantity(product.getQuantity());
@@ -22,18 +22,17 @@ public class MappingUntils {
 
     public CustomerDTO mappingCustomerDTO(Customer customer) {
         CustomerDTO customerDTO = new CustomerDTO();
-        customerDTO.setId(customer.getId());
+        customerDTO.setId(customer.getIdCustomer());
         customerDTO.setName_customer(customer.getName_customer());
-        customerDTO.setLogin_customer(customer.getLogin_customer());
-        customerDTO.setPassword_customer(customer.getPassword_customer());
+        customerDTO.setAccountUser(customer.getAccountUser());
         return customerDTO;
     }
 
     public OrderDTO mappingOrderDTO(Orders orders) {
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setId(orders.getId());
+        orderDTO.setId(orders.getId_order());
         orderDTO.setQuantity(orders.getQuantity());
-        orderDTO.setStatus(orders.getStatus());
+        orderDTO.setStatus_order(orders.getStatus_order());
         orderDTO.setTotal_cost(orders.getTotal_cost());
         orderDTO.setOrderCreated(orders.getOrderCreated());
         orderDTO.setCustomer(orders.getCustomer());
@@ -43,16 +42,15 @@ public class MappingUntils {
 
     public Customer mappingCustomer(CustomerDTO customerDTO) {
         Customer customer = new Customer();
-        customer.setId(customerDTO.getId());
+        customer.setId_customer(customerDTO.getId());
         customer.setName_customer(customerDTO.getName_customer());
-        customer.setLogin_customer(customerDTO.getLogin_customer());
-        customer.setPassword_customer(customerDTO.getPassword_customer());
+        customer.setAccountUser(customerDTO.getAccountUser());
         return customer;
     }
 
     public Product mappingProduct(ProductDTO productDTO) {
         Product product = new Product();
-        product.setId(productDTO.getId());
+        product.setId_product(productDTO.getId());
         product.setName_product(productDTO.getName_product());
         product.setPrice(productDTO.getPrice());
         product.setQuantity(productDTO.getQuantity());
@@ -61,9 +59,9 @@ public class MappingUntils {
 
     public Orders mappingOrders(OrderDTO orderDTO) {
         Orders orders = new Orders();
-        orders.setId(orderDTO.getId());
+        orders.setId_order(orderDTO.getId());
         orders.setQuantity(orderDTO.getQuantity());
-        orders.setStatus(orderDTO.getStatus());
+        orders.setStatus_order(orderDTO.getStatus_order());
         orders.setTotal_cost(orderDTO.getTotal_cost());
         orders.setOrderCreated(orderDTO.getOrderCreated());
         orders.setCustomer(orderDTO.getCustomer());

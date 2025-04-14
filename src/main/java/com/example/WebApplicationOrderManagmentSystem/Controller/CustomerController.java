@@ -35,12 +35,12 @@ public class CustomerController {
         return ResponseEntity.ok(customer);
     }
 
-    @PostMapping("/create")
+    @PostMapping("/newCustomer")
     public Customer createCustomer(@RequestBody Customer customer){
         return customerService.addCustomer(customer);
     }
 
-    @GetMapping("update/{id}")
+    @GetMapping("/updateCustomer/{id}")
     public ResponseEntity<Customer> getCustomerForUpdate(@PathVariable Long id) {
         Customer customer = customerService.findById(id);
         if (customer == null) {
@@ -49,7 +49,7 @@ public class CustomerController {
         return ResponseEntity.ok(customer);
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("/updateCustomer/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer){
         Customer customerToUpdate = customerService.updateCustomer(id, customer);
         if (customerToUpdate == null) {
@@ -59,7 +59,7 @@ public class CustomerController {
     }
 
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/deleteCustomer/{id}")
     public Object getCustomerForDelete(@PathVariable Long id) {
         Customer customer = customerService.findById(id);
         if (customer == null) {
@@ -68,7 +68,7 @@ public class CustomerController {
         return ResponseEntity.ok(customer);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/deleteCustomer/{id}")
     public Object deleteCustomer(@PathVariable Long id){
         if (customerService.findById(id) == null) {
             return ResponseEntity.notFound().build();

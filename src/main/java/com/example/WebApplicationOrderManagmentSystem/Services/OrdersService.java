@@ -89,7 +89,7 @@ public class OrdersService {
             OrderItem orderItem = new OrderItem();
             orderItem.setProduct(product);
             orderItem.setQuantity(itemDto.getQuantity());
-            order.addItem(orderItem); // Используем наш метод
+            order.addItem(orderItem);
         }
 
         order.setTotalCost(orderRequest.getTotalPrice());

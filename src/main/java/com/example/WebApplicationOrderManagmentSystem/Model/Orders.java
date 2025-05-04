@@ -35,7 +35,7 @@ public class Orders {
 
     public void addItem(OrderItem item) {
         items.add(item);
-        item.setOrder(this); // Критически важно!
+        item.setOrder(this);
     }
 
     public List<OrderItem> getItems() {

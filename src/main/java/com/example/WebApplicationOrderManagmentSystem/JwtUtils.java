@@ -18,7 +18,6 @@ public class JwtUtils  {
 
     @PostConstruct
     public void init() {
-        // Фикс для кривых ключей
         String cleanedSecret = secretBase64.trim().replaceAll("=", "");
         byte[] keyBytes = Base64.getDecoder().decode(cleanedSecret);
 
@@ -29,25 +28,22 @@ public class JwtUtils  {
         this.secretKey = Keys.hmacShaKeyFor(keyBytes);
     }
 
-    // ==================== ГЕНЕРАЦИЯ ====================
     public String generateToken(String username, String role, Long userId) {
         return Jwts.builder()
                 .setSubject(username)
                 .claim("role", role)
                 .claim("userId", userId)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 3_600_000)) // 1 час
+                .setExpiration(new Date(System.currentTimeMillis() + 3_600_000))
                 .signWith(secretKey, SignatureAlgorithm.HS512)
                 .compact();
     }
 
-    // ==================== ПАРСИНГ (parseToken) ====================
     public Claims parseToken(String token) throws JwtException {
         if (token == null || token.isBlank()) {
             throw new JwtException("Токен пустой");
         }
 
-        // Удаляем "Bearer " если есть
         token = token.replace("Bearer ", "").trim();
 
         return Jwts.parserBuilder()
@@ -57,10 +53,9 @@ public class JwtUtils  {
                 .getBody();
     }
 
-    // ==================== ВАЛИДАЦИЯ ====================
     public boolean validateToken(String token) {
         try {
-            parseToken(token); // Используем парсинг для валидации
+            parseToken(token);
             return true;
         } catch (JwtException e) {
             System.err.println("Ошибка валидации: " + e.getMessage());
@@ -78,7 +73,6 @@ public class JwtUtils  {
     }
 
 
-    // ==================== ПОЛУЧЕНИЕ ДАННЫХ ====================
     public String getUsername(String token) {
         return parseToken(token).getSubject();
     }

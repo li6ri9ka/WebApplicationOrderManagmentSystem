@@ -2,86 +2,88 @@ package com.example.WebApplicationOrderManagmentSystem.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-@Data
 @Entity
+@Table(name = "orders")
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_order;
-    @Column
-    private int quantity;
-    @Column(name = "status_order")
-    private String statusOrder;
-    @Column
-    private double total_cost;
-    @Column
-    private Timestamp orderCreated;
+    @Column(name = "id_order")
+    private Long id;
+
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "account_user_id")
     @JsonIgnore
-    private Customer customer;
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    private AccountUser accountUser;
 
-    public Long getId_order() {
-        return id_order;
+    @Column(name = "total_cost")
+    private double totalCost;
+
+    @Column(name = "status_order")
+    private String status;
+
+    @Column(name = "order_created")
+    private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<OrderItem> items = new ArrayList<>();
+
+    public void addItem(OrderItem item) {
+        items.add(item);
+        item.setOrder(this); // Критически важно!
     }
 
-    public void setId_order(Long id_order) {
-        this.id_order = id_order;
+    public List<OrderItem> getItems() {
+        return items;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public String getStatus_order() {
-        return statusOrder;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public void setStatus_order(String status_order) {
-        this.statusOrder = status_order;
+    public String getStatus() {
+        return status;
     }
 
-    public double getTotal_cost() {
-        return total_cost;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public void setTotal_cost(double total_cost) {
-        this.total_cost = total_cost;
+    public double getTotalCost() {
+        return totalCost;
     }
 
-    public Timestamp getOrderCreated() {
-        return orderCreated;
+    public void setTotalCost(double totalCost) {
+        this.totalCost = totalCost;
     }
 
-    public void setOrderCreated(Timestamp orderCreated) {
-        this.orderCreated = orderCreated;
+    public AccountUser getAccountUser() {
+        return accountUser;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public void setAccountUser(AccountUser accountUser) {
+        this.accountUser = accountUser;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public Long getId() {
+        return id;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setId(Long id) {
+        this.id = id;
     }
 }
 

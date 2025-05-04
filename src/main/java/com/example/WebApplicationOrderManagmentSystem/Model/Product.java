@@ -20,7 +20,7 @@ public class Product {
     @Column
     private int quantity;
     @OneToMany(mappedBy = "product")
-    private List<Orders> orders;
+    private List<OrderItem> orderItems;
 
 
     public Long getId_product() {
@@ -55,11 +55,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public List<Orders> getOrders() {
-        return orders;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setOrders(List<Orders> orders) {
-        this.orders = orders;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 }

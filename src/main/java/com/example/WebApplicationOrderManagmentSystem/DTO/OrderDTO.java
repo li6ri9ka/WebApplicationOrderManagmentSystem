@@ -1,20 +1,20 @@
 package com.example.WebApplicationOrderManagmentSystem.DTO;
 
-import com.example.WebApplicationOrderManagmentSystem.Model.Customer;
+import com.example.WebApplicationOrderManagmentSystem.Model.AccountUser;
 import com.example.WebApplicationOrderManagmentSystem.Model.Product;
 import lombok.Data;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Data
 public class OrderDTO {
     Long id;
-    int quantity;
     String status_order;
     double total_cost;
-    Timestamp orderCreated;
-    Customer customer;
-    Product product;
+    LocalDateTime orderCreated;
+    AccountUser accountUser;
+
 
     public Long getId() {
         return id;
@@ -24,13 +24,6 @@ public class OrderDTO {
         this.id = id;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public String getStatus_order() {
         return status_order;
@@ -48,27 +41,20 @@ public class OrderDTO {
         this.total_cost = total_cost;
     }
 
-    public Timestamp getOrderCreated() {
+    public LocalDateTime getOrderCreated() {
         return orderCreated;
     }
 
-    public void setOrderCreated(Timestamp orderCreated) {
+    public void setOrderCreated(LocalDateTime orderCreated) {
         this.orderCreated = orderCreated;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public AccountUser getAccountUser() {
+        return accountUser;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setAccountUser(AccountUser accountUser) {
+        this.accountUser = accountUser;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }
